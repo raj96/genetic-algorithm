@@ -45,10 +45,16 @@ class DNA {
     // }
 
     let midPoint = Math.floor(Math.random() * this.value.length);
-    let newValue = mutate(
-      this.value.substr(0, midPoint) + dna.value.substr(midPoint),
-      mutationRate / 100
-    );
+
+    let newDNAValue;
+
+    if (Math.random() < 0.5) {
+      newDNAValue = this.value.substr(0, midPoint) + dna.value.substr(midPoint);
+    } else {
+      newDNAValue = dna.value.substr(0, midPoint) + this.value.substr(midPoint);
+    }
+
+    let newValue = mutate(newDNAValue, mutationRate / 100);
 
     return new DNA({ value: newValue });
   }

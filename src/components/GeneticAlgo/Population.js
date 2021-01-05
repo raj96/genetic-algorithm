@@ -12,7 +12,7 @@ class Population {
   population = [];
 
   constructor({ targetString, populationSize, mutationRate }) {
-    this.targetString = this.cleanseString(targetString);
+    this.targetString = targetString;
     this.populationSize = populationSize;
     this.mutationRate = mutationRate;
 
@@ -23,21 +23,21 @@ class Population {
     this.createInitialPopulation();
   }
 
-  cleanseString(string) {
-    let newString = "";
+  // cleanseString(string) {
+  //   let newString = "";
 
-    for (let char of string) {
-      if ((char >= "a" && char <= "z") || char === " ") {
-        newString += char;
-      }
+  //   for (let char of string) {
+  //     if ((char >= "a" && char <= "z") || char === " ") {
+  //       newString += char;
+  //     }
 
-      if (char >= "A" && char <= "Z") {
-        newString += String.fromCharCode(char.charCodeAt(0) + 32);
-      }
-    }
+  //     if (char >= "A" && char <= "Z") {
+  //       newString += String.fromCharCode(char.charCodeAt(0) + 32);
+  //     }
+  //   }
 
-    return newString;
-  }
+  //   return newString;
+  // }
 
   createInitialPopulation() {
     for (let i = 0; i < this.populationSize; i++) {
