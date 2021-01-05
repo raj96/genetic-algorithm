@@ -59,7 +59,7 @@ function InputSection({ setters }) {
         setBestDna(population.bestDna);
         setGenLog((prevLog) => {
           return (
-            `Gen ${generation}: ${population.bestDna.value}\tScore: ${population.bestDna.score}\n` +
+            `Gen ${generation}: ${population.bestDna.value}\t\tScore: ${population.bestDna.score}\n` +
             prevLog
           );
         });
@@ -156,7 +156,7 @@ function ProgressSection({ getters }) {
   return (
     <Grid container justify="center" style={{ margin: "2vh 0vh 2vh 0vh" }}>
       <Grid item>
-        <Typography variant="h4" align="center">
+        <Typography variant="h6" align="center">
           <u>
             <b>Best DNA</b>
           </u>
