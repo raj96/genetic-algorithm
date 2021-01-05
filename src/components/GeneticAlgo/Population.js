@@ -1,9 +1,9 @@
 import DNA from "./DNA";
 
 class Population {
-  populationSize = 50;
+  populationSize = 300;
   // matingPoolSize = 200;
-  mutationRate = 1; //Percent
+  mutationRate = 25; //Percent
 
   targetString = "";
   bestDna = "";
@@ -11,9 +11,15 @@ class Population {
 
   population = [];
 
-  constructor(targetString, setBestDna) {
+  constructor({ targetString, populationSize, mutationRate }) {
     this.targetString = this.cleanseString(targetString);
-    this.setBestDna = setBestDna;
+    this.populationSize = populationSize;
+    this.mutationRate = mutationRate;
+
+    console.log(
+      `Population initialized with ${this.populationSize} DNAs and ${this.mutationRate}% mutation rate`
+    );
+
     this.createInitialPopulation();
   }
 

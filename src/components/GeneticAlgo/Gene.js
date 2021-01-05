@@ -11,9 +11,9 @@ class Gene {
 
   randomGenome() {
     const base = 97;
-    const randomVal = Math.floor(Math.random() * 26);
+    const randomVal = Math.floor(Math.random() * 27);
 
-    if (randomVal === 0) return " ";
+    if (randomVal === 26) return " ";
     return String.fromCharCode(base + randomVal);
   }
 }
