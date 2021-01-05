@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/App.css"],"names":[],"mappings":"AAAA,EACE,+BACF,CAEA,KACE,aACF","file":"main.7023d9db.chunk.css","sourcesContent":["* {\r\n  font-family: \"Ubuntu\", sans-serif;\r\n}\r\n\r\nbody {\r\n  margin: 0 auto;\r\n}\r\n"]}
