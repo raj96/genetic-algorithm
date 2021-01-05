@@ -64,7 +64,7 @@ function InputSection({ setters }) {
           );
         });
         generation++;
-        if (population.bestDna.value !== value) loop();
+        if (population.bestDna.score !== 0) loop();
       }, 10);
     };
     loop();
