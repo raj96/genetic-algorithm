@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/genetic-algorithm/static/css/main.7023d9db.chunk.css",
-    "main.js": "/genetic-algorithm/static/js/main.678018fd.chunk.js",
-    "main.js.map": "/genetic-algorithm/static/js/main.678018fd.chunk.js.map",
+    "main.js": "/genetic-algorithm/static/js/main.b3d33d4d.chunk.js",
+    "main.js.map": "/genetic-algorithm/static/js/main.b3d33d4d.chunk.js.map",
     "runtime-main.js": "/genetic-algorithm/static/js/runtime-main.de2403cf.js",
     "runtime-main.js.map": "/genetic-algorithm/static/js/runtime-main.de2403cf.js.map",
     "static/js/2.beaec8eb.chunk.js": "/genetic-algorithm/static/js/2.beaec8eb.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.de2403cf.js",
     "static/js/2.beaec8eb.chunk.js",
     "static/css/main.7023d9db.chunk.css",
-    "static/js/main.678018fd.chunk.js"
+    "static/js/main.b3d33d4d.chunk.js"
   ]
 }
