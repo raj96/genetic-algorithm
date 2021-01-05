@@ -3,17 +3,17 @@ class Gene {
     let dnaVal = "";
 
     for (let i = 0; i < size; i++) {
-      dnaVal += this.randomChar();
+      dnaVal += this.randomGenome();
     }
 
     return dnaVal;
   };
 
-  randomChar() {
+  randomGenome() {
     const base = 97;
     const randomVal = Math.floor(Math.random() * 26);
 
-    if (randomVal == 0) return " ";
+    if (randomVal === 0) return " ";
     return String.fromCharCode(base + randomVal);
   }
 }

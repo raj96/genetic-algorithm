@@ -2,7 +2,7 @@ import DNA from "./DNA";
 
 class Population {
   populationSize = 50;
-  matingPoolSize = 200;
+  // matingPoolSize = 200;
   mutationRate = 1; //Percent
 
   targetString = "";
@@ -21,7 +21,7 @@ class Population {
     let newString = "";
 
     for (let char of string) {
-      if ((char >= "a" && char <= "z") || char == " ") {
+      if ((char >= "a" && char <= "z") || char === " ") {
         newString += char;
       }
 
@@ -35,10 +35,9 @@ class Population {
 
   createInitialPopulation() {
     for (let i = 0; i < this.populationSize; i++) {
-      this.population.push(
-        new DNA({ random: true, geneSize: this.targetString.length })
-      );
+      this.population.push(new DNA({ geneSize: this.targetString.length }));
     }
+    this.calculateScores();
   }
 
   calculateScores() {
@@ -51,10 +50,18 @@ class Population {
       }
     });
 
-    this.population.sort((dna1, dna2) => dna1.score > dna2.score);
+    //console.log(this.population.sort((dna1, dna2) => dna1.score > dna2.score));
   }
 
-  matePopulation() {}
+  matePopulation() {
+    let newPopulation = [];
+    for (let i = 0; i < this.populationSize; i++) {
+      newPopulation.push(
+        this.bestDna.crossOver(this.population[i], this.mutationRate)
+      );
+    }
+    this.population = newPopulation;
+  }
 }
 
 export default Population;

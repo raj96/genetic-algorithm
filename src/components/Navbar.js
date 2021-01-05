@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/styles";
 import { deepOrange } from "@material-ui/core/colors";
 
 let style = makeStyles((theme) => {
-  console.log(theme);
   return {
     navbarFooter: {
       height: "25vh",

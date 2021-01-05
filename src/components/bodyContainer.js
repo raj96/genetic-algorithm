@@ -18,26 +18,53 @@ function BodyContainer() {
       marginTop: "-15vh",
     },
   };
+  const [bestDna, setBestDna] = useState(null);
+  const [currentGen, setCurrentGen] = useState(0);
+  const [genLog, setGenLog] = useState("");
 
   return (
     <Container style={style.rootContainer} maxWidth="lg">
       <Card elevation={10}>
         <CardContent>
-          <InputSection />
+          <InputSection setters={{ setBestDna, setCurrentGen, setGenLog }} />
           <Divider />
-          <ProgressSection />
+          <ProgressSection getters={{ bestDna, currentGen, genLog }} />
         </CardContent>
       </Card>
     </Container>
   );
 }
 
-function InputSection() {
+function InputSection({ setters }) {
+  const { setBestDna, setCurrentGen, setGenLog } = setters;
+  let generation = 1;
+
   let textInputRef = useRef();
+  const startGenAlgo = (value) => {
+    let population = new Population(value);
+    let loop = () => {
+      if (generation % 10 === 0) console.log(population);
+      setTimeout(() => {
+        setCurrentGen(generation);
+        population.matePopulation();
+        population.calculateScores();
+        setBestDna(population.bestDna);
+        setGenLog((prevLog) => {
+          return (
+            `Gen ${generation}: ${population.bestDna.value}\tScore: ${population.bestDna.score}\n` +
+            prevLog
+          );
+        });
+        generation++;
+        if (population.bestDna.value !== value) loop();
+      }, 10);
+    };
+    loop();
+  };
+
   const handleClick = () => {
-    let population = new Population(textInputRef.value);
-    population.calculateScores();
-    console.log(population);
+    if (!textInputRef.current || !textInputRef.current.value) return;
+    startGenAlgo(textInputRef.current.value);
   };
 
   return (
@@ -53,7 +80,7 @@ function InputSection() {
         <TextField
           fullWidth
           label="Target text"
-          inputRef={(ref) => (textInputRef = ref)}
+          inputRef={(ref) => (textInputRef.current = ref)}
         />
       </Grid>
       <Grid item>
@@ -66,19 +93,14 @@ function InputSection() {
   );
 }
 
-function ProgressSection() {
-  const [bestDna, setBestDna] = useState("my name is raja");
-  const [currentGen, setCurrentGen] = useState(1);
-  const [genLog, setGenLog] = useState([
-    "Best in gen 1: mahnapa sa ajar",
-    "Best in gen 2: Something something",
-  ]);
+function ProgressSection({ getters }) {
+  const { bestDna, currentGen, genLog } = getters;
 
   return (
     <Grid container justify="center" style={{ margin: "2vh 0vh 2vh 0vh" }}>
       <Grid item>
         <Typography variant="h4">
-          <b>Best DNA:</b> {bestDna}
+          <b>Best DNA:</b> {bestDna?.value}
         </Typography>
       </Grid>
       {/*log section*/}
@@ -88,16 +110,15 @@ function ProgressSection() {
           <Card elevation={1}>
             <CardHeader
               title="Generation Log"
-              action={`Population: 200 | Gen: ${currentGen}`}
+              action={`Population: 50 | Gen: ${currentGen}`}
             ></CardHeader>
             <CardContent>
               <TextField
                 fullWidth
                 multiline
+                disabled
                 rowsMax={15}
-                value={genLog.reduce(
-                  (lineA, lineB) => lineA + "\n" + lineB + "\n"
-                )}
+                value={genLog}
               />
             </CardContent>
           </Card>
