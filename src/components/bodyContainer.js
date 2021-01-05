@@ -167,7 +167,7 @@ function ProgressSection({ getters }) {
           <Card elevation={1}>
             <CardHeader
               title="Generation Log"
-              action={`Population: 50 | Gen: ${currentGen}`}
+              action={`Gen: ${currentGen}`}
             ></CardHeader>
             <CardContent>
               <TextField
