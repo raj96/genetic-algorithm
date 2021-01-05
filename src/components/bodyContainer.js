@@ -16,7 +16,7 @@ import Population from "./GeneticAlgo/Population";
 function BodyContainer() {
   const style = {
     rootContainer: {
-      marginTop: "-15vh",
+      marginTop: "-25vh",
     },
   };
   const [bestDna, setBestDna] = useState(null);
@@ -89,7 +89,7 @@ function InputSection({ setters }) {
     <Grid
       container
       spacing={0}
-      justify="space-around"
+      justify="space-evenly"
       style={{ marginBottom: "1vh" }}
     >
       <Grid item xs={5}>
@@ -111,7 +111,7 @@ function InputSection({ setters }) {
 
       <Divider orientation="vertical" flexItem />
 
-      <Grid item xs={5}>
+      <Grid item xs={4}>
         <Grid container>
           <Grid item xs={12}>
             <Typography id="population-slider-label" variant="body1">
@@ -156,14 +156,18 @@ function ProgressSection({ getters }) {
   return (
     <Grid container justify="center" style={{ margin: "2vh 0vh 2vh 0vh" }}>
       <Grid item>
-        <Typography variant="h4">
-          <b>Best DNA:</b> {bestDna?.value}
+        <Typography variant="h4" align="center">
+          <u>
+            <b>Best DNA</b>
+          </u>
+          <br />
+          {bestDna?.value}
         </Typography>
       </Grid>
       {/*log section*/}
       <Grid container>
-        <Grid item xs={2} />
-        <Grid item xs={8}>
+        <Grid item xs={1} />
+        <Grid item xs={10}>
           <Card elevation={1}>
             <CardHeader
               title="Generation Log"
@@ -181,7 +185,7 @@ function ProgressSection({ getters }) {
           </Card>
         </Grid>
 
-        <Grid item xs={2} />
+        <Grid item xs={1} />
       </Grid>
     </Grid>
   );
